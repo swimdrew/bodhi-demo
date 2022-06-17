@@ -17,6 +17,8 @@ async function main() {
   const recepit = await evmprovider.getTransactionByHash(
     "0xa82791bb02323ead8caa02adadd9fa2fde015d81bc170e5fd484306d060d016e"
   );
+  
+  // tx & receipt are null
   console.log(`tx: ${tx}\nreceipt: ${recepit}`);
 }
 
