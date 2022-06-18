@@ -5,6 +5,8 @@ async function main() {
   const evmprovider = new EvmRpcProvider(
     "wss://karura-rpc-0.aca-api.network",
     {
+      // subqlUrl is required to query historial data
+      // can be found in the [doc](https://evmdocs.acala.network/network/network-configuration#karura-main-network)
       subqlUrl: 'https://karura-evm-subql.aca-api.network',
     }
   );
