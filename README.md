@@ -1,5 +1,5 @@
 ### run
 
 ```
-tsc && node main.js
+yarn && yarn ts-node main.ts
 ```

@@ -1,12 +1,12 @@
-import { Provider } from "@acala-network/bodhi";
-import { createApiOptions } from "@acala-network/eth-providers";
+import { createApiOptions, EvmRpcProvider } from "@acala-network/eth-providers";
 import { WsProvider } from "@polkadot/api";
 
 async function main() {
-  const evmprovider = new Provider(
-    createApiOptions({
-      provider: new WsProvider("wss://karura-rpc-0.aca-api.network"),
-    })
+  const evmprovider = new EvmRpcProvider(
+    "wss://karura-rpc-0.aca-api.network",
+    {
+      subqlUrl: 'https://karura-evm-subql.aca-api.network',
+    }
   );
   const balance = await evmprovider.getBalance(
     "0x1c3D657F0518A094BF351852bad4285EFc0D5Ce9"
@@ -21,7 +21,9 @@ async function main() {
   );
 
   // tx & receipt are null
-  console.log(`balance: ${balance.toString()}\ntx: ${tx}\nreceipt: ${recepit}`);
+  console.log(`balance: ${balance.toString()}\ntx: ${JSON.stringify(tx)}\nreceipt: ${JSON.stringify(recepit)}`);
+
+  await evmprovider.disconnect();
 }
 
 main();
